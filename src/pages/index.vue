@@ -6,6 +6,13 @@ import { ref } from "vue";
 const sectionOpen = ref(1)
  
 const maVar = ref(true) 
+const toggleSection = (key) => {
+  if (sectionOpen.value === key) {
+    sectionOpen.value = null
+  } else {
+    sectionOpen.value = key
+  }
+}
 
 const sectionsData = [
     {
@@ -41,6 +48,7 @@ const sectionsData = [
 
 
 <section>
+  <h1 class="font-bold text-2xl mt-3">  Accordeon </h1>
     <button class="btn text-xl" @pointerdown="sectionOpen = 1">Bouton1 </button>
     <p v-show="sectionOpen === 1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 </section>
@@ -54,13 +62,19 @@ const sectionsData = [
     <button class="btn text-xl" @pointerdown="sectionOpen = 3">Bouton3 </button>
     <p v-show="sectionOpen === 3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 </section>
-
+<h1 class="font-bold text-2xl mt-3"> Section boucle </h1>
 <section v-for="({ label, texte }, key) of sectionsData" :v-key="key">
     <pre class="font-mono">key : {{ key }}</pre>
     <pre class="font-mono">label : {{ label }}</pre>
     <pre class="font-mono">texte : {{ texte }}</pre>
   </section>
 
+  <h1 class="font-bold text-2xl mt-3"> Section boucle accordeon </h1>
+
+  <section class="mt-3" v-for="({ label, texte }, key) of sectionsData" :key="key">
+      <button class="btn text-xl font-mono" @click="toggleSection(key)">{{ label }}</button>
+      <p class="font-mono" v-show="sectionOpen === key">{{ texte }}</p>
+    </section>
 
 
   <button @click="maVar = 

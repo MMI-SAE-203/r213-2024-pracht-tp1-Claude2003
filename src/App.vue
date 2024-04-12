@@ -10,11 +10,19 @@ onErrorCaptured((err, instance, info) => {
 </script>
 
 <template>
+
+         
+
   <header>
     <nav>
       <ul>
         <li>
-          <RouterLink to="/" class="text-red-500 underline"> Accueil </RouterLink>
+          <RouterLink to="/" class="text-red-500 underline"> Accueil </RouterLink></li>
+          <li>
+          <RouterLink to="/" class="text-red-500 underline"> Accordeon </RouterLink>
+        </li>
+        <li>
+          <RouterLink to="/" class="text-red-500 underline"> A propos </RouterLink>
         </li>
       </ul>
     </nav>
@@ -22,7 +30,7 @@ onErrorCaptured((err, instance, info) => {
     <button
     aria-controls="mainNav"
     aria-expanded="true"
-    class="rounded-full border-2 border-red-600 bg-red-300 px-2"
+    class="rounded-full border-2 border-purple-600 bg-purple-300 px-5 text-2xl "
     @pointerdown="menuIsOpen = !menuIsOpen"
   >
     menu
@@ -34,11 +42,11 @@ onErrorCaptured((err, instance, info) => {
     enter-to-class="translate-x-0"
     leave-active-class="-translate-x-full"
   >
-  <nav id="mainNav"  v-show="menuIsOpen" >
+  <nav id="mainNav"  v-show="menuIsOpen" class="bg-blue-500 w-64 py-4 px-2" >
     <ul>
-      <li><a href="#">item 1</a></li>
-      <li><a href="#">item 2</a></li>
-      <li><a href="#">item 3</a></li>
+      <li><a href="#" class="text-white font-bold" >item 1</a></li>
+      <li><a href="#" class="text-white font-bold">item 2</a></li>
+      <li><a href="#" class="text-white font-bold">item 3</a></li>
     </ul>
   </nav>
 </Transition>
